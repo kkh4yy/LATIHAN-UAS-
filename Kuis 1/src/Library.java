@@ -21,11 +21,11 @@ public class Library {
     // this method should return a new (different List) than the List in this object.
     // Make sure you copy the values to a new List before return it.
     public List<Book> getBooks(){
-        return null; // Remove this line and implement it correctly
+        return books; // Remove this line and implement it correctly
     }
 
     public int getMemberCount(){
-        return -1; // Remove this line and implement it correctly
+        return members.size(); // Remove this line and implement it correctly
     }
 
     public void addMember(Member member) {
@@ -36,27 +36,27 @@ public class Library {
     // this method should return a new (different List) than the List in this object.
     // Make sure you copy the values to a new List before return it.
     public List<Member> getMembers(){
-        return null; // Remove this line and implement the method
+        return members; // Remove this line and implement the method
     }
     
     // TODO: Implement findBookByIsbn method
     public Book findBookByIsbn(String isbn) {
         // Your code here - use loop to find book with matching ISBN
-        return null; // Remove this line and implement the method
+        return books.get(getBookCount()); // Remove this line and implement the method
     }
     
     // TODO: Implement findMemberById method
     public Member findMemberById(String memberId) {
         // Your code here
         
-        return null; // Remove this line and implement the method
+        return members.get(getBookCount()); // Remove this line and implement the method
     }
     
     // TODO: Implement borrowBook method
     // Find member and book, then call member's borrowBook method
     public boolean borrowBook(String memberId, String isbn) {
         // Your code here
-        return false; // Remove this line and implement the method
+        return borrowBook(memberId, isbn); // Remove this line and implement the method
     }
     
     // TODO: Implement returnBook method

@@ -17,25 +17,25 @@ public class Book {
     public String getTitle() {
         // Your code here
 
-        return null; // Remove this line and return the title
+        return title; // Remove this line and return the title
     }
     
     public String getAuthor() {
         // Your code here
 
-        return null; // Remove this line and return the author
+        return author; // Remove this line and return the author
     }
     
     public String getIsbn() {
         // Your code here
 
-        return null; // Remove this line and return the isbn
+        return isbn; // Remove this line and return the isbn
     }
     
     public boolean isAvailable() {
         // Your code here
-        
-        return false; // Remove this line and return the availability status
+       Book books = null;
+              return books.isAvailable(); // Remove this line and return the availability status
     }
     
     public void setAvailable(boolean available) {
@@ -49,4 +49,9 @@ public class Book {
     }
 
     // TODO: You may need to implements/overrides additional methods
+    // public boolean isAvailable() {
+    //     // Your code here
+
+    //    return books.isAvailable(); // Remove this line and return the availability status
+    // }
 }

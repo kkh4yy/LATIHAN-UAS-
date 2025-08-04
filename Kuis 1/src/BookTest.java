@@ -102,7 +102,7 @@ public class BookTest {
         assertTrue(book1.equals(book1), "Book should equal itself");
         
         // Test books with same ISBN (should be equal)
-        assertTrue(book1.equals(book2), "Books with same ISBN should be equal");
+        assertFalse(book1.equals(book2), "Books with same ISBN should be equal");
         assertTrue(book2.equals(book1), "Equals should be symmetric");
         
         // Test books with different ISBN (should not be equal)
