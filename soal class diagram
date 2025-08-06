@@ -73,5 +73,132 @@ Relasi:
 	•	Main akan menggunakan class Pengguna dan THP untuk simulasi transfer
 
 ⸻
+Berikut adalah implementasi Java lengkap berdasarkan class diagram kamu yang terdiri dari:
+	•	Interface Transfer
+	•	Class Pengguna
+	•	Class THP
+	•	Class Main
 
+⸻
+
+✅ 1. Interface: Transfer.java
+
+public interface Transfer {
+    void mentransfer(Pengguna dari, THP ke, double jumlah);
+}
+
+
+⸻
+
+✅ 2. Class: Pengguna.java
+
+public class Pengguna implements Transfer {
+    private String nama;
+    private String noRek;
+    private double nominal;
+
+    public Pengguna(String nama, String noRek, double nominal) {
+        this.nama = nama;
+        this.noRek = noRek;
+        this.nominal = nominal;
+    }
+
+    public String getNama() {
+        return nama;
+    }
+
+    public String getNoRek() {
+        return noRek;
+    }
+
+    public double getNominal() {
+        return nominal;
+    }
+
+    public void setNominal(double nominal) {
+        this.nominal = nominal;
+    }
+
+    @Override
+    public void mentransfer(Pengguna dari, THP ke, double jumlah) {
+        if (dari.nominal >= jumlah) {
+            dari.nominal -= jumlah;
+            ke.menerima(jumlah);
+            ke.cetakPermintaan(dari, jumlah);
+            ke.cetakNotifikasi(dari, jumlah);
+        } else {
+            System.out.println("Saldo tidak cukup untuk transfer.");
+        }
+    }
+}
+
+
+⸻
+
+✅ 3. Class: THP.java
+
+public class THP implements Transfer {
+    private double saldoTHP = 0;
+
+    public void menerima(double jumlah) {
+        saldoTHP += jumlah;
+    }
+
+    public void cetakPermintaan(Pengguna pengirim, double jumlah) {
+        System.out.println("Permintaan transfer dari: " + pengirim.getNama());
+        System.out.println("Jumlah: " + jumlah);
+    }
+
+    public void cetakNotifikasi(Pengguna pengirim, double jumlah) {
+        System.out.println("Notifikasi: " + jumlah + " berhasil diterima dari " + pengirim.getNama());
+    }
+
+    @Override
+    public void mentransfer(Pengguna dari, THP ke, double jumlah) {
+        // Implementasi tidak diperlukan, kecuali jika THP juga bisa mentransfer
+    }
+
+    public double getSaldo() {
+        return saldoTHP;
+    }
+}
+
+
+⸻
+
+✅ 4. Class: Main.java
+
+public class Main {
+    public static void main(String[] args) {
+        Pengguna user1 = new Pengguna("Andi", "0012345678", 500_000);
+        THP thpReceiver = new THP();
+
+        System.out.println("Saldo awal Andi: " + user1.getNominal());
+        System.out.println("Saldo awal THP: " + thpReceiver.getSaldo());
+
+        // Transfer sebesar 200_000
+        user1.mentransfer(user1, thpReceiver, 200_000);
+
+        System.out.println("Saldo akhir Andi: " + user1.getNominal());
+        System.out.println("Saldo akhir THP: " + thpReceiver.getSaldo());
+    }
+}
+
+
+⸻
+
+✅ Output Contoh:
+
+Saldo awal Andi: 500000.0
+Saldo awal THP: 0.0
+Permintaan transfer dari: Andi
+Jumlah: 200000.0
+Notifikasi: 200000.0 berhasil diterima dari Andi
+Saldo akhir Andi: 300000.0
+Saldo akhir THP: 200000.0
+
+
+⸻
+
+Kalau kamu ingin versi lain seperti GUI, Scanner input, atau tambahan seperti log, tinggal bilang ya!
 Kalau kamu ingin, aku bisa bantu buatkan kode Java dari class diagram ini atau versi UML digital-nya. Mau dilanjutkan?
