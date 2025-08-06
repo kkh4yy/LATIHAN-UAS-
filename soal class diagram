@@ -1,0 +1,77 @@
+Berdasarkan class diagram yang kamu gambar, sistem ini menggambarkan skenario transfer dana antara pengguna, menggunakan antarmuka Transfer, dengan dua class utama yaitu Pengguna dan THP. Mari kita uraikan menjadi tiga bagian sesuai permintaan:
+
+⸻
+
+✅ 1. CRC Card (Class-Responsibility-Collaboration)
+
+📄 Class: Pengguna/User
+	•	Responsibilities:
+	•	Menyimpan data user (nama, no rek, nominal)
+	•	Melakukan transfer dana
+	•	Collaborators:
+	•	Interface Transfer
+	•	Class THP
+
+⸻
+
+📄 Interface: Transfer
+	•	Responsibilities:
+	•	Menyediakan kontrak untuk method mentransfer
+	•	Collaborators:
+	•	Diimplementasi oleh Pengguna dan THP
+
+⸻
+
+📄 Class: THP
+	•	Responsibilities:
+	•	Cetak permintaan
+	•	Cetak notifikasi
+	•	Menerima transfer
+	•	Implementasi method mentransfer
+	•	Collaborators:
+	•	Pengguna (sumber data transfer)
+
+⸻
+
+✅ 2. SRP (Single Responsibility Principle)
+
+Setiap class memiliki satu tanggung jawab:
+	•	✅ Pengguna: hanya bertugas menyimpan data dan melakukan transfer.
+	•	✅ Transfer (interface): bertanggung jawab memberikan kontrak untuk transfer.
+	•	✅ THP: bertugas memproses dan mencetak hasil transfer (logika penerima transfer).
+
+Jadi semua class telah mengikuti prinsip SRP.
+
+⸻
+
+✅ 3. Class Diagram (Versi Rapi)
+
+<<interface>> Transfer
++ mentransfer()
+
+Class Pengguna
+- nama: String
+- noRek: String
+- nominal: double
++ mentransfer(): void
+--------------------------
+<<implements>> Transfer
+
+Class THP
++ cetakPermintaan(): void
++ cetakNotifikasi(): void
++ menerima(): void
++ mentransfer(): void
+--------------------------
+<<implements>> Transfer
+
+Class Main
++ main(): void
+
+Relasi:
+	•	Pengguna dan THP mengimplementasikan interface Transfer
+	•	Main akan menggunakan class Pengguna dan THP untuk simulasi transfer
+
+⸻
+
+Kalau kamu ingin, aku bisa bantu buatkan kode Java dari class diagram ini atau versi UML digital-nya. Mau dilanjutkan?
